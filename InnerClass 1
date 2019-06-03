@@ -1,0 +1,73 @@
+public class NestedClassDemo {
+    //可以直接在变量后赋值，默认为初始化
+    private String name;
+    //但是不能以这种形式给变量赋值，编译错误，不能识别，因为是在类中
+    //name="23";
+    private int price;
+    static int number;
+    public void eat(){
+        name="father eat little";
+        System.out.println(name);
+    }
+    public void display(){
+        System.out.println("hello ,stupid, you can see you father finally");
+    }
+    /**
+     * 推荐使用get()来获取成员内部类，尤其是该内部的构造函数无参数时
+     * @return
+     */
+    public InnerClass getInnerClass(){
+        return new InnerClass();
+    }
+    /**
+     * 成员内部类与外部类中的大部分要求是一样的，
+     * 但是它可以访问外部类中的所有方法和变量，无论是否是private修饰的
+     */
+
+     class InnerClass {
+        // 内部类和外部类的实例变量可以共存
+        String name;
+        Sister s=new Sister();
+        //不能用static修饰
+        //static int i=1;
+        //使用外部类的属性
+       public int i=1*price;
+         public void eatlot(){
+             name="饭饭";
+             //使用外部类的方法
+             eat();
+             System.out.println("son eat lot"+name+number);
+             //这种调用一定要写在方法里
+             s.care();
+         }
+         //内部类调用外部的方法
+         public NestedClassDemo getOuterClass(){
+             return NestedClassDemo.this;
+         }
+    }
+
+    public static void main(String[] args) {
+        NestedClassDemo nestedClassDemo=new NestedClassDemo();
+        /**
+         *  一定要注意NestedClassDemo.Person这里面一定是大写，
+         *  否则 就会报错，你tmd还像个傻子一样去看是否是上面的问题，我tmd真觉得你就是个250
+         *  不是和你説了么，编程应该注意什么都，你都忘了，笨蛋************
+         *
+         *  创建成员内部类的两种方法（注：要创建一个成员内部类必须 存在一个外部类的对象）
+         */
+       //第一种方法创建成员内部类
+        NestedClassDemo.InnerClass innerClass=nestedClassDemo.new InnerClass();
+        innerClass.eatlot();
+        innerClass.getOuterClass().display();
+        //第二种就去创建成员内部类，但是必须有一个get()方法
+        NestedClassDemo.InnerClass innerClass1=nestedClassDemo.getInnerClass();
+        innerClass1.eatlot();
+
+    }
+}
+class Sister{
+    String price;
+    public void care(){
+        System.out.println("care");
+    }
+}
