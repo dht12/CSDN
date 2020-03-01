@@ -1,0 +1,24 @@
+/*
+ * 子类构造器会先调用父类的构造器，如果子类构造器中没有调用super，则是默认调用父类的无参构造器，如果父类中
+ * 有有参构造器，却没有无参构造器，则在子类构造器一一定要使用”super(参数)“指定调用父类的有参构造器，否则报错
+ */
+class Father{
+	public Father(String a){
+		System.out.println(a);
+	}
+	public Father(int a){
+		System.out.println(a);
+	}
+}
+class S extends Father{
+	public S(String s){
+		super(2);
+		System.out.println(s);
+    //构造方法中也可以调用普通方法
+		i(1);
+	}
+	public void i(int i){
+		System.out.println(i);
+	}
+	
+}
