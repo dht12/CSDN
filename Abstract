@@ -1,0 +1,28 @@
+/*
+ * abstract 只能修符方法和类，不能修符变量
+ */
+
+public abstract class TestAbstract{
+	public int i;
+	//abstract 不可修饰字段 
+	//abstract int jj;
+
+	//可以有构造方法
+	public TestAbstract(int i) {
+		this.i = i;
+	}
+
+	public String name = "这个人叫";
+	public final static int i4 = 4;
+
+	abstract void eat();
+	abstract void like();
+
+	//可以有普通方法
+	public void println() {
+		System.out.print(i + this.name);
+	}
+
+	
+
+}
