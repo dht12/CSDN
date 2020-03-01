@@ -1,4 +1,12 @@
 public static void main(String[] args) {	
+
+       // 前台传多个值的时候多用这个方法
+	String s = "'1','2','ad','bc'";
+	String ss[] = s.split("','");
+	for (String a : ss) {
+		System.out.println(a.toString());
+
+	}
 	String str1="hello";
 	String str2="hello";
 	String str3=new String("hello");
