@@ -34,6 +34,17 @@ public static void main(String[] args) {
         System.out.println("ac".compareTo("ab"));//1
         System.out.println("夏".compareTo("周"));
         System.out.println(str0.replaceAll("2", "_"));
+	
+	StringBuilder[] sb=new StringBuilder[3];
+		for (int s = 0; s < sb.length; s++) {
+			System.out.println(s+" "+sb[s]);//输出 null null null
+		}
+		//如果不给sb[0]一个初值，sb[0].append()时会报NullpointerException
+                //如果要是想给sb数组中的元素赋值必须都要先初始化，否则都会报NullpointerException异常，不光是第一个	
+		sb[0]=new StringBuilder("");
+		sb[0].append("334");
+	
+	
         
 	}
 	public static  boolean isNumber(String str){
