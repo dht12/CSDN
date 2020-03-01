@@ -1,0 +1,47 @@
+public class Array {
+ /*
+  * 求数组最大值，最小值，和，平均值
+  */
+	
+	public static void main(String args[]){ 
+		 int init[]= new int[]{1,2,3,88,9,3,0};
+		//数组的输出
+			 
+		    	for(int i=0;i<init.length;i++){
+		    		System.out.print(init[i]+"  ");
+		    	}
+				System.out.println();
+
+		double result[]=star(init);
+		System.out.println(result[1]);
+		System.out.println(result[0]);
+		System.out.println(result[2]);
+		System.out.println(result[3]);
+		
+	}
+ 
+	//数组最大值与最小值 平均值 和
+	static double[] star(int data[]){
+		//创建一个新的数组，接受值
+		double[] result=new double[4];
+		result[0]=data[0];//最大值 
+		result[1]=data[0];//最小值 
+		result[2]=data[0];//和
+	    for(int i=0;i<data.length;i++){
+	    	if(result[0]<data[i]){
+	    		result[0]=data[i];
+	    	}
+	    	if(result[1]>data[i]){
+	    		result[1]=data[i];
+	    	}
+	    	result[2]+=data[i];
+	    }
+	    result[3]=result[2]/result.length;
+		return result;
+	}
+	
+   
+    	
+    
+    
+}
