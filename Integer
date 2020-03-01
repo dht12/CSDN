@@ -1,0 +1,49 @@
+/*
+	 * Integer与int比较时使用“==”integer 自动转化为int
+	 * integer与integer比较时用“==”，数值必须在-128~127之间，超出后不等，这和integer.valueof()有关系
+	 * integer调用equals时，先判断类型是否，不同即false，相同后比较值的大小
+	 */
+	public static void main(String[] args) {
+		Integer i = 257;
+		Integer b = 257;
+		int c = 257;
+		int d = 2;
+		Integer ii = 2;
+		Integer i1 = 2;
+		System.out.println(ii == i1);// T
+
+		Integer in = new Integer(9);
+		Integer in2 = new Integer(9);
+		System.out.println(in == in2);// F
+
+		// 不是同一类型，直接报错
+		Long l = new Long(9);
+		// System.out.println(in==l);
+		System.out.println(in.equals(l));
+
+		System.out.println(c + ~5);
+		System.out.println(i == c);
+		System.out.println(i.equals(c));
+		System.out.println(i.equals(257));
+		//越界了
+		System.out.println(i == b);
+		System.out.println("-------------------------");
+		TestInteger t = new TestInteger();
+		/*
+		 * 值传递：调用方法改变tt的值时，在主函数中是不会改变的 在本方法内改变，是可以改变的
+		 */
+		int tt = 1;
+		t.f(tt);
+		System.out.println(tt);
+		tt = ++tt;
+		System.out.println(tt);
+		System.out.println("----------------------");
+		System.out.println(in.equals(in2));
+		System.out.println(in.equals(new Integer(9)));
+		System.out.println(in.equals(9));
+
+	}
+public void f(int i){
+	i+=1;
+	 System.out.println(i);
+}
