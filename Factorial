@@ -1,0 +1,19 @@
+//求10的阶乘
+/*
+	 * 0!=1 1!=1 2!=2 3!=6 4!=24 5!=120 6!=720 7!=5040 8!=40320 9!=362880
+	 * 10!=3628800
+	 */
+public  int getFactorial(int n){
+		if(n >= 0){
+			if(n==0){
+				System.out.println(n+"!=1");
+				return 1;
+			}else{
+				System.out.println(n);
+				int temp = n*getFactorial(n-1);
+				System.out.println(n+"!="+temp);
+				return temp;
+			}
+		}
+		return -1;
+	}
