@@ -1,0 +1,19 @@
+public static void main(String[] args) {
+		final int i ;
+		i=3;
+		//不可以修改其值
+		//i=0;
+		System.out.println(i);
+		//final修饰的变量不能再指向其他变量，但是变量的内容可以改变
+		final StringBuffer s=new StringBuffer("d");
+		s.append("d");
+		System.out.println(s);
+		final byte b1=9,b2=8;
+		byte b11=2,b12=2,b3,b4;
+		//因为fianl修饰的后的变量是常量，所以不会报错
+		b3=b1+b2;
+		System.out.println(b3);
+		//必须向下转型，否则会报错
+		b4=(byte) (b11+b12);
+		System.out.println(b4);
+	}
