@@ -1,0 +1,39 @@
+/*
+ * 线程0正在启动
+ 线程1正在启动
+ Thread-0---0
+ Thread-1---0
+ Thread-1---1
+ Thread-1---2
+ Thread-0---1
+ Thread-1---3
+ Thread-0---2
+ Thread-0---3
+ 真正实现多线程，宏观上让所有线程一起执行，也叫并发
+
+ */
+
+public class Tesstart implements Runnable{
+
+	@Override
+	public void run() {
+		for(int i=0;i<=10;i++){
+			System.out.println(Thread.currentThread().getName()+"---"+i);
+		}
+	}
+ 
+	public static void main(String[] args) {
+		
+		for(int i=0;i<2;i++){
+			Tesstart ts=new Tesstart();
+			Thread t=new Thread(ts);
+			System.out.println("线程"+i+"正在启动");
+			// 线程运行时调用的是start，由线程内部进行，如果用run的话，只是线程0执行完了，执行1，不会体现线程并发的现象
+			t.start();
+			//t.run()
+		}
+		
+		
+			
+	}
+}
