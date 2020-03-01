@@ -1,0 +1,80 @@
+//包名
+package test;
+
+import java.lang.reflect.InvocationTargetException;
+/*
+ * 使用Class类的newInstance方法会调用构造方法
+ * .用反射中的constructor类 的newInstance 调用构造方法
+ */
+public class Student {
+	private String name;
+	private int age;
+   protected class Heart{
+    	void work(){
+    		 System.out.println("i have a heart");
+    	}
+   
+    }
+	public Student(String name, int age) {
+		this.name = name;
+		this.age = age;
+	}
+	//一定要有这句话 否则会报java.lang.InstantiationException: test.Student异常
+	//Caused by: java.lang.NoSuchMethodException: test.Student.<init>()
+	public Student(){
+		
+	}
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return age + name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+public static void main(String[] args) {
+	Student s=new Student("小明",34);
+	Student.Heart heart=s.new Heart();
+	//Student中的一个内部类
+	heart.work();
+	//System.out.println(s);
+	Student ss = null;
+
+	try {
+		//test.Student 是Student类的包名
+		 ss=(Student)Class.forName("test.Student").newInstance();
+			ss.setAge(3);
+			ss.setName("dfdf");
+	} catch (InstantiationException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (IllegalAccessException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}finally{
+	
+		System.out.println(ss);
+	}
+	try {
+		Student student=Student.class.getConstructor().newInstance();
+		student.setAge(2);
+		student.setName("erer");
+		System.out.println(student);
+	} catch (InstantiationException | IllegalAccessException
+			| IllegalArgumentException | InvocationTargetException
+			| NoSuchMethodException | SecurityException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}finally{
+		System.out.println(ss);
+	}
+	
+}
+}
